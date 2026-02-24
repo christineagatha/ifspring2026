@@ -1,0 +1,129 @@
+html {
+    font-family: "Archivo Narrow", sans-serif;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+h1, h2, h3, h4, p {
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 80px;
+    line-height: 1;
+    margin-bottom: 16px;
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 1;
+}
+
+h3 {
+    text-align: center;
+    line-height: 1;
+    font-size: 40px;
+    margin-bottom: 39px;
+}
+
+h4 {
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+p {
+    margin-bottom: 16px;
+}
+
+header {
+    /* background-color: rgba(0, 0, 255, 0.281); */
+    background-image: url("../images/main-banner.avif");
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    padding: 166px 0 162px 0;
+}
+
+div.column {
+    /* background-color: rgba(0, 128, 0, 0.125); */
+    width: 960px;
+    margin: auto;
+}
+
+section {
+    padding: 48px 0 40px 0;
+}
+section.intro {
+    /* background-color: rgba(0, 255, 195, 0.52); */
+    background-color: rgb(203, 223, 244);
+}
+.first-section-img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+
+    float: right;
+    border: 1px solid black;
+    margin-left: 38px;
+    margin-bottom: 38px;
+}
+
+section.photo-grid {
+    /* background-color: rgba(0, 255, 94, 0.367); */
+    background-color: rgb(51, 51, 68);
+    padding-bottom: 64px;
+    color: white;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 23px;
+    margin-top: -1px;
+}
+
+li {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+
+}
+
+li img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    padding-left: 1px;
+
+}
+
+li div {
+    padding-left: 12px;
+    padding-right: 22px;
+}
+
+section.final-section {
+    /* background-color: rgba(137, 43, 226, 0.289); */
+    background-color: rgb(183, 251, 230);
+    padding-bottom: 101px;
+}
+
+.final-section-paragraph{
+    font-size: 26px;
+    text-align: center;
+    margin: auto;
+    width: 703px;
+    line-height: 1.38;
+}
+
+footer {
+    background-color: rgb(126, 192, 247);;
+    padding: 41px 0 40px 0;
+}
+
+footer p {
+    margin-bottom: 0;
+    text-align: left;
+}
