@@ -1,0 +1,266 @@
+/* COCA-COLA */
+a#btn_cocacola {
+	position: relative;
+    display: block;
+    margin: 85px auto 0 auto;
+	width: 220px;
+	height: 80px;
+	background: #e41d25;
+	border-radius: 50px;
+	text-align: center;
+	overflow: hidden;
+	box-shadow: 0 10px 20px rgba(0,0,0,.2);
+	transition: all .3s ease;
+}
+
+a#btn_cocacola img {
+	width: 60%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	filter: brightness(0) invert(1);
+	z-index: 2;
+}
+
+a#btn_cocacola:before,
+a#btn_cocacola:after,
+a#btn_cocacola span {
+	position: absolute;
+	border-radius: 50%;
+	z-index: 1;
+	transition: transform 1s ease, opacity .9s ease;
+}
+
+a#btn_cocacola:before,
+a#btn_cocacola:after {
+	content: "";
+	background: rgba(87, 48, 18, 0.719);
+}
+
+a#btn_cocacola:before {
+	width: 40px;
+	height: 40px;
+	left: 30px;
+	top: 40px;
+}
+
+a#btn_cocacola:after {
+	width: 25px;
+	height: 25px;
+	right: 40px;
+	top: 60px;
+}
+
+a#btn_cocacola span {
+	width: 18px;
+	height: 18px;
+	background: rgba(255,255,255,0.2);
+	left: 100px;
+	top: 70px;
+}
+
+a#btn_cocacola:hover {
+	overflow: visible;
+	transform: translateY(-6px) scale(1.05);
+	box-shadow: 0 18px 30px rgba(0,0,0,.25);
+}
+
+a#btn_cocacola:hover:before {
+	transform: translateY(-75px);
+	opacity: 0;
+}
+
+a#btn_cocacola:hover:after {
+	transform: translateY(-80px);
+	opacity: 0;
+}
+
+a#btn_cocacola:hover span {
+	transform: translateY(-85px);
+	opacity: 0;
+}
+
+
+/* APPLE */
+a#btn_apple {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 130px;
+	height: 130px;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 26px;
+	background-color: #111;
+	color: #fff;
+	text-decoration: none;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+	box-shadow: 0 12px 30px rgba(0,0,0,.18);
+	transition: transform .35s ease, box-shadow .35s ease, background-color .35s ease, color .35s ease;
+}
+
+a#btn_apple i {
+	font-size: 48px;
+	margin-bottom: 4px;
+	line-height: 1;
+}
+
+a#btn_apple:hover {
+	background-color: #f5f5f7;
+	color: #111;
+	box-shadow: 0 16px 32px rgba(0,0,0,.2);
+}
+
+
+/* IBM */
+a#btn_ibm {
+	display: block;
+	margin: 108px auto 0 auto;
+	width: 180px;
+	text-align: center;
+}
+
+a#btn_ibm img {
+	width: 140px;
+	display: block;
+	margin: 0 auto;
+	filter: brightness(0);
+	transition: filter .6s ease;
+}
+
+a#btn_ibm:hover img {
+	filter: brightness(0) saturate(100%)
+		invert(29%) sepia(96%) saturate(2154%)
+		hue-rotate(203deg) brightness(97%) contrast(101%);
+	transform: translateY(-3px);
+}
+
+
+/* NIKE */
+a#btn_nike {
+	position: relative;
+	display: block;
+	width: 200px;
+	height: 80px;
+	margin: 105px auto 0 auto;
+	background-color: #111;
+	overflow: hidden;
+	text-decoration: none;
+	box-shadow: 0 10px 20px rgba(0,0,0,.2);
+	transition: transform .3s ease, box-shadow .3s ease;
+}
+
+a#btn_nike img {
+	position: absolute;
+	left: 25px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 60px;
+    filter: brightness(0) invert(1);
+}
+
+a#btn_nike span {
+	position: absolute;
+	top: 50%;
+	right: -120px;
+	transform: translateY(-50%);
+	font-family: 'Montserrat', sans-serif;
+	font-size: 26px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	color: #fff;
+	transition: right .4s ease;
+}
+
+a#btn_nike:hover {
+	transform: translateY(-4px) scale(1.03);
+	box-shadow: 0 16px 28px rgba(0,0,0,.25);
+}
+
+a#btn_nike:hover span {
+	right: 40px;
+}
+
+
+/* INSTAGRAM */
+a#btn_instagram {
+	position: relative;
+	display: block;
+	width: 120px;
+	height: 120px;
+	margin: 85px auto 0 auto;
+	border-radius: 32px;
+	overflow: hidden;
+	text-decoration: none;
+	background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 45%, #6228d7 100%);
+	box-shadow: 0 12px 24px rgba(98,40,215,.28);
+}
+
+a#btn_instagram i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 56px;
+	color: #fff;
+	z-index: 3;
+}
+
+a#btn_instagram:hover i {
+	animation: iconFlash .5s ease forwards;
+}
+
+a#btn_instagram:before,
+a#btn_instagram:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 50%;
+	background: #000000;
+	z-index: 2;
+}
+
+a#btn_instagram:before {
+	top: -50%;
+}
+
+a#btn_instagram:after {
+	bottom: -50%;
+}
+
+a#btn_instagram:hover:before {
+	animation: shutterTop .5s ease forwards;
+}
+
+a#btn_instagram:hover:after {
+	animation: shutterBottom .5s ease forwards;
+}
+
+@keyframes shutterTop {
+	0%   { top: -50%; }
+	40%  { top: 0; }
+	60%  { top: 0; }
+	100% { top: -50%; }
+}
+
+@keyframes shutterBottom {
+	0%   { bottom: -50%; }
+	40%  { bottom: 0; }
+	60%  { bottom: 0; }
+	100% { bottom: -50%; }
+}
+
+@keyframes iconFlash {
+	0%   { color: #fff; }
+	40%  { color: #000; }
+	60%  { color: #000; }
+	100% { color: #fff; }
+}
