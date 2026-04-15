@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA MVP Homepage</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+      /* RESET & BASE */
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        background: #050924;
+        color: white;
+        font-family: 'Patrick Hand SC', cursive;
+      }
+
+      /* NAVBAR */
+      .navbar {
+        background: #10184d;
+        border-bottom: 3px solid #a6a6a6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 22px;
+        height: 80px;
+      }
+
+      .logo {
+        font-size: 2.2rem;
+        font-weight: normal;
+        color: #f5f5f5;
+        text-decoration: none;
+        text-shadow: 1px 1px 4px rgba(245,245,245,0.75);
+        font-family: 'Patrick Hand SC', cursive;
+      }
+
+      .nav-buttons {
+        display: flex;
+        gap: 12px;
+      }
+
+      .nav-btn {
+        text-decoration: none;
+        background: #f5f5f5;
+        color: #222;
+        padding: 5px 20px;
+        border-radius: 12px;
+        border: 3px solid #a6a6a6;
+        font-size: 1.4rem;
+        font-family: 'Patrick Hand', cursive;
+        line-height: 1.4;
+      }
+
+      /* HERO */
+      .hero {
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-image: url("images/hero.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+      }
+
+      .hero-overlay {
+        padding: 0 50px 40px;
+        z-index: 2;
+      }
+
+      .hero-overlay h1 {
+        font-size: 4rem;
+        line-height: 1.15;
+        font-weight: normal;
+        color: #d5d8f1;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 6px rgba(5,9,36,0.75);
+        font-family: 'Patrick Hand SC', cursive;
+      }
+
+      /* INTRO */
+      .intro {
+        padding: 30px 40px 44px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 22px;
+      }
+
+      .intro-card {
+        background: #63d0ff;
+        color: #050924;
+        max-width: 920px;
+        width: 100%;
+        border-radius: 16px;
+        border: 3px solid #a6a6a6;
+        padding: 22px 28px;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        min-height: 150px;
+      }
+
+      .trophy {
+        width: 110px;
+        min-width: 110px;
+        height: 140px;
+        flex-shrink: 0;
+        background-image: url("https://www.figma.com/api/mcp/asset/7f5b0e14-d8a4-4059-a8ff-80c2cf7f5b9b");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+      }
+
+      .intro-text {
+        font-size: 1.4rem;
+        line-height: 1.7;
+        flex: 1;
+        font-family: 'Patrick Hand', cursive;
+      }
+
+      .learn-btn {
+        background: #db2c3a;
+        color: #f5f5f5;
+        border: 3px solid #f5f5f5;
+        border-radius: 16px;
+        padding: 12px 38px;
+        font-size: 1.7rem;
+        cursor: pointer;
+        box-shadow: 3px 3px 5px rgba(5,9,36,0.75);
+        font-family: 'Patrick Hand', cursive;
+      }
+
+      /* FEATURED */
+      .featured {
+        padding: 16px 40px 60px;
+      }
+
+      .section-title {
+        font-size: 2.8rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        color: #f5f5f5;
+        text-shadow: 1px 1px 4px rgba(245,245,245,0.75);
+        margin-bottom: 12px;
+        font-family: 'Patrick Hand SC', cursive;
+      }
+
+      .featured-subtitle {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: normal;
+        margin-bottom: 28px;
+        color: #f5f5f5;
+        font-family: 'Patrick Hand SC', cursive;
+        text-shadow: 1px 1px 4px rgba(245,245,245,0.75);
+      }
+
+      /* SLIDESHOW */
+      .slideshow-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .arrow-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        border: 3px solid #f5f5f5;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 2px 2px 4px rgba(245,245,245,0.75);
+        transition: background 0.2s;
+      }
+
+      .arrow-btn.left  { background: #a6a6a6; }
+      .arrow-btn.right { background: #db2c3a; }
+      .arrow-btn:hover { opacity: 0.85; }
+
+      .slides-viewport {
+        overflow: hidden;
+        width: 580px;
+        flex-shrink: 0;
+      }
+
+      .slides-track {
+        display: flex;
+        transition: transform 0.4s ease;
+      }
+
+      .player-card {
+        min-width: 580px;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .player-image-wrap {
+        width: 185px;
+        height: 185px;
+        border-radius: 20px;
+        overflow: hidden;
+        flex-shrink: 0;
+        position: relative;
+      }
+
+      .player-image-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center bottom;
+      }
+
+      .player-image-wrap::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        z-index: 0;
+      }
+
+      .player-image-wrap img { position: relative; z-index: 1; }
+
+      /* Per-player accent colors */
+      .card-kareem  .player-image-wrap { background: #702f8a; }
+      .card-jordan  .player-image-wrap { background: #bd1440; }
+      .card-russell .player-image-wrap { background: #038241; }
+      .card-wilt    .player-image-wrap { background: #e8a006; }
+      .card-lebron  .player-image-wrap { background: #702f8a; }
+
+      .player-info h4 {
+        font-size: 1.5rem;
+        margin-bottom: 14px;
+        font-weight: normal;
+        font-family: 'Patrick Hand SC', cursive;
+        color: #f5f5f5;
+      }
+
+      .player-info ul {
+        margin-bottom: 22px;
+        padding-left: 22px;
+        font-family: 'Patrick Hand', cursive;
+        font-size: 1.15rem;
+        line-height: 2.3;
+        color: #f5f5f5;
+      }
+
+      .see-btn {
+        background: #db2c3a;
+        color: #f5f5f5;
+        border: 3px solid #f5f5f5;
+        border-radius: 8px;
+        padding: 8px 18px;
+        font-size: 1.15rem;
+        cursor: pointer;
+        box-shadow: 2px 2px 4px rgba(245,245,245,0.75);
+        font-family: 'Patrick Hand', cursive;
+      }
+
+      .see-btn:hover { opacity: 0.85; }
+
+      .slide-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 22px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #a6a6a6;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .dot.active { background: #db2c3a; }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .navbar { padding: 0 16px; height: 70px; }
+        .logo { font-size: 1.8rem; }
+        .nav-btn { font-size: 1.1rem; padding: 4px 14px; }
+
+        .hero-overlay { padding: 0 30px 30px; }
+        .hero-overlay h1 { font-size: 2.8rem; }
+
+        .intro { padding: 24px 24px 36px; }
+        .intro-card { max-width: 100%; padding: 18px 20px; gap: 16px; flex-direction: column; text-align: center; }
+        .trophy { width: 80px; min-width: 80px; height: 100px; }
+        .intro-text { font-size: 1.2rem; }
+        .learn-btn { font-size: 1.4rem; padding: 10px 28px; }
+
+        .featured { padding: 16px 24px 50px; }
+        .section-title { font-size: 2.2rem; }
+        .featured-subtitle { font-size: 1.6rem; margin-bottom: 20px; }
+
+        .slides-viewport { width: 400px; }
+        .player-card { min-width: 400px; gap: 20px; }
+        .player-image-wrap { width: 140px; height: 140px; }
+        .player-info h4 { font-size: 1.2rem; }
+        .player-info ul { font-size: 1rem; line-height: 2; }
+        .arrow-btn { width: 40px; height: 40px; font-size: 1.2rem; }
+      }
+
+      @media (max-width: 600px) {
+        .navbar { height: 60px; }
+        .logo { font-size: 1.5rem; }
+        .nav-buttons { gap: 8px; }
+        .nav-btn { font-size: 0.95rem; padding: 4px 10px; border-radius: 8px; }
+
+        .hero-overlay { padding: 0 20px 20px; }
+        .hero-overlay h1 { font-size: 2rem; }
+
+        .intro { padding: 20px 16px 28px; }
+        .intro-text { font-size: 1.05rem; }
+        .learn-btn { font-size: 1.2rem; padding: 8px 22px; }
+
+        .featured { padding: 12px 16px 40px; }
+        .section-title { font-size: 1.8rem; }
+        .featured-subtitle { font-size: 1.3rem; }
+
+        .slideshow-wrapper { gap: 10px; }
+        .slides-viewport { width: 260px; }
+        .player-card { min-width: 260px; flex-direction: column; text-align: center; gap: 14px; }
+        .player-image-wrap { width: 120px; height: 120px; }
+        .player-info h4 { font-size: 1.1rem; margin-bottom: 8px; }
+        .player-info ul { font-size: 0.9rem; margin-bottom: 14px; padding-left: 0; list-style-position: inside; }
+        .see-btn { font-size: 1rem; padding: 6px 14px; }
+        .arrow-btn { width: 34px; height: 34px; font-size: 1rem; }
+      }
+    </style>
+</head>
+<body>
+
+  <!-- Nav Bar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">NBA MVP</a>
+    <nav class="nav-buttons">
+      <a href="explore.html" class="nav-btn">Explore Players</a>
+      <a href="about.html" class="nav-btn">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-overlay">
+        <h1>Where the Greatest<br>Call Home</h1>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="intro">
+      <div class="intro-card">
+        <div class="trophy"></div>
+        <p class="intro-text">
+          Each season, one player rises above the rest, delivering performances that define greatness
+          and inspire generations. To be named MVP is to cement a legacy, standing alongside the
+          legends who have shaped basketball's history....
+        </p>
+      </div>
+      <a href="explore.html"><button class="learn-btn">Learn More</button></a>
+    </section>
+
+    <!-- Featured -->
+    <section class="featured">
+      <h2 class="section-title">Featured</h2>
+      <h3 class="featured-subtitle">The Most Awarded Player</h3>
+
+      <div class="slideshow-wrapper">
+        <button class="arrow-btn left" id="prevBtn" aria-label="Previous player">&#10094;</button>
+
+        <div class="slides-viewport">
+          <div class="slides-track" id="slidesTrack">
+
+            <!-- Slide 1: Kareem -->
+            <div class="player-card card-kareem">
+              <div class="player-image-wrap">
+                <img src="https://www.figma.com/api/mcp/asset/1e84c35f-b71a-4c45-9556-6d5b7db4e7fd" alt="Kareem Abdul-Jabbar">
+              </div>
+              <div class="player-info">
+                <h4>Kareem Abdul-Jabbar (C)</h4>
+                <ul>
+                  <li>total awards: 6</li>
+                  <li>total teams: 2</li>
+                  <li>total seasons: 20</li>
+                </ul>
+                <a href="explore.html"><button class="see-btn">See All Players</button></a>
+              </div>
+            </div>
+
+            <!-- Slide 2: Michael Jordan -->
+            <div class="player-card card-jordan">
+              <div class="player-image-wrap">
+                <img src="https://www.figma.com/api/mcp/asset/0a98da6c-1cf4-4776-bf43-f90b8e7898b7" alt="Michael Jordan">
+              </div>
+              <div class="player-info">
+                <h4>Michael Jordan (SG)</h4>
+                <ul>
+                  <li>total awards: 5</li>
+                  <li>total teams: 2</li>
+                  <li>total seasons: 15</li>
+                </ul>
+                <a href="explore.html"><button class="see-btn">See All Players</button></a>
+              </div>
+            </div>
+
+            <!-- Slide 3: Bill Russell -->
+            <div class="player-card card-russell">
+              <div class="player-image-wrap">
+                <img src="https://www.figma.com/api/mcp/asset/81205767-8d1d-4ea8-9157-0236c59cfc61" alt="Bill Russell">
+              </div>
+              <div class="player-info">
+                <h4>Bill Russell (C)</h4>
+                <ul>
+                  <li>total awards: 5</li>
+                  <li>total teams: 1</li>
+                  <li>total seasons: 13</li>
+                </ul>
+                <a href="explore.html"><button class="see-btn">See All Players</button></a>
+              </div>
+            </div>
+
+            <!-- Slide 4: Wilt Chamberlain -->
+            <div class="player-card card-wilt">
+              <div class="player-image-wrap">
+                <img src="https://www.figma.com/api/mcp/asset/2e1a7726-47a2-427a-beaf-492f2f860cb9" alt="Wilt Chamberlain">
+              </div>
+              <div class="player-info">
+                <h4>Wilt Chamberlain (C)</h4>
+                <ul>
+                  <li>total awards: 4</li>
+                  <li>total teams: 4</li>
+                  <li>total seasons: 14</li>
+                </ul>
+                <a href="explore.html"><button class="see-btn">See All Players</button></a>
+              </div>
+            </div>
+
+            <!-- Slide 5: LeBron James -->
+            <div class="player-card card-lebron">
+              <div class="player-image-wrap">
+                <img src="https://www.figma.com/api/mcp/asset/d0b88f1f-ce7c-45de-9205-9c9c0ac8b586" alt="LeBron James">
+              </div>
+              <div class="player-info">
+                <h4>LeBron James (SF)</h4>
+                <ul>
+                  <li>total awards: 4</li>
+                  <li>total teams: 3</li>
+                  <li>total seasons: 22</li>
+                </ul>
+                <a href="explore.html"><button class="see-btn">See All Players</button></a>
+              </div>
+            </div>
+
+          </div><!-- /slides-track -->
+        </div><!-- /slides-viewport -->
+
+        <button class="arrow-btn right" id="nextBtn" aria-label="Next player">&#10095;</button>
+      </div>
+
+      <!-- Dot indicators -->
+      <div class="slide-dots" id="slideDots"></div>
+    </section>
+  </main>
+
+  <script>
+    const track   = document.getElementById('slidesTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsEl  = document.getElementById('slideDots');
+
+    const slides = track.querySelectorAll('.player-card');
+    const total  = slides.length;
+    let current  = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    });
+
+    function getSlideWidth() {
+      return document.querySelector('.slides-viewport').offsetWidth;
+    }
+
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = `translateX(-${current * getSlideWidth()}px)`;
+      dotsEl.querySelectorAll('.dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+      prevBtn.style.background = current === 0 ? '#a6a6a6' : '#db2c3a';
+      nextBtn.style.background = current === total - 1 ? '#a6a6a6' : '#db2c3a';
+    }
+
+    window.addEventListener('resize', () => goTo(current));
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+  </script>
+</body>
+</html>
