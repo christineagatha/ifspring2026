@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NBA MVP Homepage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&family=Patrick+Hand&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #050924;
+      color: white;
+      font-family: 'Patrick Hand SC', cursive;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: #10184d;
+      border-bottom: 3px solid #a6a6a6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 22px;
+      height: 80px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: nowrap;
+    }
+
+    .logo {
+      font-size: 2.2rem;
+      font-weight: normal;
+      color: #f5f5f5;
+      text-decoration: none;
+      text-shadow: 1px 1px 4px rgba(245, 245, 245, 0.75);
+      font-family: 'Patrick Hand SC', cursive;
+      transition: opacity 0.2s ease, text-shadow 0.2s ease;
+    }
+
+    .logo:hover {
+      opacity: 0.85;
+      text-shadow: 1px 1px 8px rgba(99, 208, 255, 0.9);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: nowrap;
+    }
+
+    .nav-btn {
+      text-decoration: none;
+      background: #f5f5f5;
+      color: #222;
+      padding: 5px 20px;
+      border-radius: 12px;
+      border: 3px solid #a6a6a6;
+      font-size: 1.4rem;
+      font-family: 'Patrick Hand', cursive;
+      line-height: 1.4;
+      white-space: nowrap;
+      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .nav-btn:hover {
+      background: #63d0ff;
+      transform: translateY(-2px);
+      box-shadow: 0 3px 6px rgba(99, 208, 255, 0.4);
+    }
+
+    .nav-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    /* INTRO */
+    .hero {
+      width: 100%;
+      min-height: calc(100vh - 80px);
+      height: auto;
+      background-image: url("images/hero.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .hero-overlay {
+      padding: 0 50px 40px;
+      z-index: 2;
+    }
+
+    .hero-overlay h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 1.15;
+      font-weight: normal;
+      color: #d5d8f1;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 6px rgba(5, 9, 36, 0.75);
+      font-family: 'Patrick Hand SC', cursive;
+    }
+
+    .intro {
+      padding: 30px 40px 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .intro-card {
+      background: #63d0ff;
+      color: #050924;
+      max-width: 920px;
+      width: 100%;
+      border-radius: 16px;
+      border: 3px solid #a6a6a6;
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      min-height: 150px;
+    }
+
+    .trophy {
+      width: 110px;
+      min-width: 110px;
+      height: 140px;
+      flex-shrink: 0;
+      background-image: url("https://www.figma.com/api/mcp/asset/7f5b0e14-d8a4-4059-a8ff-80c2cf7f5b9b");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center bottom;
+    }
+
+    .intro-text {
+      font-size: 1.4rem;
+      line-height: 1.7;
+      flex: 1;
+      font-family: 'Patrick Hand', cursive;
+    }
+
+    .learn-btn {
+      background: #db2c3a;
+      color: #f5f5f5;
+      border: 3px solid #f5f5f5;
+      border-radius: 16px;
+      padding: 12px 38px;
+      font-size: 1.7rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 5px rgba(5, 9, 36, 0.75);
+      font-family: 'Patrick Hand', cursive;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .learn-btn:hover {
+      background: #c4252f;
+      transform: translateY(-2px);
+      box-shadow: 4px 5px 8px rgba(5, 9, 36, 0.85);
+    }
+
+    .learn-btn:active {
+      transform: translateY(1px);
+      box-shadow: 2px 2px 3px rgba(5, 9, 36, 0.75);
+    }
+
+    /* FEATURED */
+    .featured {
+      padding: 30px 40px 80px;
+    }
+
+    .section-title {
+      font-size: 3.6rem;
+      font-weight: normal;
+      text-transform: uppercase;
+      color: #f5f5f5;
+      text-shadow: 1px 1px 4px rgba(245, 245, 245, 0.75);
+      margin-bottom: 16px;
+      font-family: 'Patrick Hand SC', cursive;
+    }
+
+    .featured-subtitle {
+      text-align: center;
+      font-size: 2.6rem;
+      font-weight: normal;
+      margin-bottom: 40px;
+      color: #f5f5f5;
+      font-family: 'Patrick Hand SC', cursive;
+      text-shadow: 1px 1px 4px rgba(245, 245, 245, 0.75);
+    }
+
+    .slideshow-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .arrow-btn {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      border: 3px solid #f5f5f5;
+      font-size: 2rem;
+      cursor: pointer;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 2px 2px 4px rgba(245, 245, 245, 0.75);
+      transition: background 0.2s;
+    }
+
+    .arrow-btn.left {
+      background: #a6a6a6;
+    }
+
+    .arrow-btn.right {
+      background: #db2c3a;
+    }
+
+    .arrow-btn:hover {
+      opacity: 0.85;
+    }
+
+    .slides-viewport {
+      overflow: hidden;
+      width: min(100%, 760px);
+      flex-shrink: 1;
+    }
+
+    .slides-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .player-card {
+      min-width: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .player-image-wrap {
+      width: 250px;
+      height: 250px;
+      border-radius: 24px;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .player-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+    }
+
+    .player-image-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      z-index: 0;
+    }
+
+    .player-image-wrap img {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-kareem .player-image-wrap {
+      background: #702f8a;
+    }
+
+    .card-jordan .player-image-wrap {
+      background: #ce1141;
+    }
+
+    .card-lebron .player-image-wrap {
+      background: #6f263d;
+    }
+
+    .card-kobe .player-image-wrap {
+      background: #552583;
+    }
+
+    .card-shaq .player-image-wrap {
+      background: #552583;
+    }
+
+    .player-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Patrick Hand', cursive;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 8px;
+      line-height: 1.3;
+    }
+
+    .player-info h4 {
+      font-size: 2rem;
+      margin-bottom: 18px;
+      font-weight: normal;
+      font-family: 'Patrick Hand SC', cursive;
+      color: #f5f5f5;
+    }
+
+    .player-info ul {
+      margin-bottom: 28px;
+      padding-left: 26px;
+      font-family: 'Patrick Hand', cursive;
+      font-size: 1.4rem;
+      line-height: 2.2;
+      color: #f5f5f5;
+    }
+
+    .see-btn {
+      background: #db2c3a;
+      color: #f5f5f5;
+      border: 3px solid #f5f5f5;
+      border-radius: 10px;
+      padding: 10px 22px;
+      font-size: 1.35rem;
+      cursor: pointer;
+      box-shadow: 2px 2px 4px rgba(245, 245, 245, 0.75);
+      font-family: 'Patrick Hand', cursive;
+    }
+
+    .see-btn:hover {
+      opacity: 0.85;
+    }
+
+    .slide-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #a6a6a6;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .dot.active {
+      background: #db2c3a;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: #10184d;
+      border-top: 3px solid #a6a6a6;
+      padding: 40px 50px 30px;
+      color: #f5f5f5;
+      font-family: 'Patrick Hand', cursive;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 30px;
+    }
+
+    .footer-section p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 6px;
+      color: #d5d8f1;
+    }
+
+    .footer-section a {
+      color: #63d0ff;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .footer-section a:hover {
+      opacity: 0.75;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 12px 16px;
+        height: auto;
+        flex-wrap: nowrap;
+        gap: 10px;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+      }
+
+      .nav-buttons {
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+      }
+
+      .nav-btn {
+        font-size: 1rem;
+        padding: 6px 14px;
+      }
+
+      .hero {
+        min-height: 70vh;
+        align-items: flex-end;
+      }
+
+      .hero-overlay {
+        padding: 0 24px 24px;
+      }
+
+      .intro {
+        padding: 24px 20px 36px;
+      }
+
+      .intro-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        gap: 16px;
+      }
+
+      .trophy {
+        width: 85px;
+        min-width: 85px;
+        height: 105px;
+      }
+
+      .featured {
+        padding: 24px 20px 50px;
+      }
+
+      .slideshow-wrapper {
+        gap: 16px;
+      }
+
+      .player-card {
+        gap: 20px;
+      }
+
+      .arrow-btn {
+        width: 46px;
+        height: 46px;
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+      }
+
+      .nav-buttons {
+        width: auto;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+        gap: 8px;
+      }
+
+      .logo {
+        font-size: 1.55rem;
+      }
+
+      .nav-btn {
+        font-size: 0.9rem;
+        padding: 5px 8px;
+      }
+
+      .hero {
+        min-height: 60vh;
+        background-position: center;
+      }
+
+      .hero-overlay {
+        padding: 0 18px 18px;
+      }
+
+      .intro {
+        padding: 20px 16px 28px;
+      }
+
+      .featured {
+        padding: 20px 16px 40px;
+      }
+
+      .slideshow-wrapper {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .slides-viewport {
+        width: 100%;
+      }
+
+      .player-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+        padding: 10px 4px;
+      }
+
+      .player-info ul {
+        padding-left: 0;
+        list-style-position: inside;
+        margin-bottom: 18px;
+      }
+
+      .arrow-btn {
+        width: 42px;
+        height: 42px;
+      }
+
+      .site-footer {
+        padding: 28px 18px 22px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      .nav-btn {
+        font-size: 0.85rem;
+        padding: 4px 8px;
+      }
+
+      .hero {
+        min-height: 50vh;
+      }
+
+      .hero-overlay h1 {
+        line-height: 1.1;
+      }
+
+      .intro-card {
+        border-radius: 12px;
+        padding: 16px;
+      }
+
+      .learn-btn,
+      .see-btn {
+        width: 100%;
+        max-width: 240px;
+      }
+
+      .footer-section p {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Nav Bar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">NBA MVP</a>
+    <nav class="nav-buttons">
+      <a href="explore.html" class="nav-btn">Explore Players</a>
+      <a href="about.html" class="nav-btn">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-overlay">
+        <h1>Where the Greatest<br>Call Home</h1>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="intro">
+      <div class="intro-card">
+        <div class="trophy"></div>
+        <p class="intro-text">
+          Each season, one player rises above the rest, delivering performances that define greatness
+          and inspire generations. To be named MVP is to cement a legacy, standing alongside the
+          legends who have shaped basketball's history....
+        </p>
+      </div>
+      <a href="explore.html"><button class="learn-btn">Learn More</button></a>
+    </section>
+
+    <!-- Featured -->
+    <section class="featured">
+      <h2 class="section-title">Featured</h2>
+      <h3 class="featured-subtitle">The Most Awarded Players</h3>
+
+      <div class="slideshow-wrapper">
+        <button class="arrow-btn left" id="prevBtn" aria-label="Previous player">&#10094;</button>
+
+        <div class="slides-viewport">
+          <div class="slides-track" id="slidesTrack">
+
+            <!-- Slide 1: Kareem Abdul-Jabbar -->
+            <div class="player-card card-kareem">
+              <div class="player-image-wrap">
+                <img src="https://www.figma.com/api/mcp/asset/5af3feb5-b4ff-44d5-bdbc-3abd20c52638"
+                  alt="Kareem Abdul-Jabbar">
+              </div>
+              <div class="player-info">
+                <h4>Kareem Abdul-Jabbar (C)</h4>
+                <ul>
+                  <li>total awards: 6</li>
+                  <li>total teams: 2</li>
+                  <li>total seasons: 20</li>
+                </ul>
+                <a href="player.html?id=kareem-abdul-jabbar"><button class="see-btn">See Player</button></a>
+              </div>
+            </div>
+
+            <!-- Slide 2: Michael Jordan -->
+            <div class="player-card card-jordan">
+              <div class="player-image-wrap">
+                <img src="https://www.figma.com/api/mcp/asset/bc601e85-e23e-45fa-a41d-b4edd642885f"
+                  alt="Michael Jordan">
+              </div>
+              <div class="player-info">
+                <h4>Michael Jordan (SG)</h4>
+                <ul>
+                  <li>total awards: 5</li>
+                  <li>total teams: 2</li>
+                  <li>total seasons: 15</li>
+                </ul>
+                <a href="player.html?id=michael-jordan"><button class="see-btn">See Player</button></a>
+              </div>
+            </div>
+
+            <!-- Slide 3: LeBron James -->
+            <div class="player-card card-lebron">
+              <div class="player-image-wrap">
+                <img src="https://www.figma.com/api/mcp/asset/a97ee97a-8885-4253-b979-a6d455132f9a"
+                  alt="LeBron James">
+              </div>
+              <div class="player-info">
+                <h4>LeBron James (SF)</h4>
+                <ul>
+                  <li>total awards: 4</li>
+                  <li>total teams: 3</li>
+                  <li>total seasons: 22</li>
+                </ul>
+                <a href="player.html?id=lebron-james"><button class="see-btn">See Player</button></a>
+              </div>
+            </div>
+
+            <!-- Slide 4: Kobe Bryant -->
+            <div class="player-card card-kobe">
+              <div class="player-image-wrap">
+                <img src="images/kobe.webp"
+                  alt="Kobe Bryant">
+              </div>
+              <div class="player-info">
+                <h4>Kobe Bryant (SG)</h4>
+                <ul>
+                  <li>total awards: 1</li>
+                  <li>total teams: 1</li>
+                  <li>total seasons: 20</li>
+                </ul>
+                <a href="player.html?id=kobe-bryant"><button class="see-btn">See Player</button></a>
+              </div>
+            </div>
+
+            <!-- Slide 5: Shaquille O'Neal -->
+            <div class="player-card card-shaq">
+              <div class="player-image-wrap">
+                <img src="https://www.figma.com/api/mcp/asset/4d6e3c8e-7b26-4050-9d75-55731b32e7b9"
+                  alt="Shaquille O'Neal">
+              </div>
+              <div class="player-info">
+                <h4>Shaquille O'Neal (C)</h4>
+                <ul>
+                  <li>total awards: 1</li>
+                  <li>total teams: 6</li>
+                  <li>total seasons: 19</li>
+                </ul>
+                <a href="player.html?id=shaquille-oneal"><button class="see-btn">See Player</button></a>
+              </div>
+            </div>
+
+          </div><!-- /slides-track -->
+        </div><!-- /slides-viewport -->
+
+        <button class="arrow-btn right" id="nextBtn" aria-label="Next player">&#10095;</button>
+      </div>
+
+      <div class="slide-dots" id="slideDots"></div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <p>&copy; 2026 NBA MVP. All rights reserved.</p>
+      </div>
+
+      <div class="footer-section">
+        <p>Creative Director: Bean R</p>
+        <p>Designer: Christine J</p>
+      </div>
+
+      <div class="footer-section">
+        <p>Player information, statistics, and historical data sourced from <a href="https://en.wikipedia.org/wiki/NBA_Most_Valuable_Player_Award" target="_blank" rel="noopener">Wikipedia</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const track = document.getElementById('slidesTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsEl = document.getElementById('slideDots');
+
+    const slides = track.querySelectorAll('.player-card');
+    const total = slides.length;
+    let current = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    });
+
+    function getSlideWidth() {
+      return document.querySelector('.slides-viewport').offsetWidth;
+    }
+
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = `translateX(-${current * getSlideWidth()}px)`;
+      dotsEl.querySelectorAll('.dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+      prevBtn.style.background = current === 0 ? '#a6a6a6' : '#db2c3a';
+      nextBtn.style.background = current === total - 1 ? '#a6a6a6' : '#db2c3a';
+    }
+
+    window.addEventListener('resize', () => goTo(current));
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+  </script>
+</body>
+
+</html>
