@@ -4,7 +4,7 @@ const PLAYER_PROFILES = {
         lastName: "Abdul-Jabbar",
         fullName: "Kareem Abdul-Jabbar",
         color: "#702f8a",
-        img: "https://www.figma.com/api/mcp/asset/5af3feb5-b4ff-44d5-bdbc-3abd20c52638",
+        img: "images/kareem.webp",
         trophies: [
             { number: "1/6", year: 1971, team: "Bucks" },
             { number: "2/6", year: 1972, team: "Bucks" },
@@ -38,7 +38,7 @@ const PLAYER_PROFILES = {
         lastName: "James",
         fullName: "LeBron James",
         color: "#6f263d",
-        img: "https://www.figma.com/api/mcp/asset/a97ee97a-8885-4253-b979-a6d455132f9a",
+        img: "images/lebron.webp",
         trophies: [
             { number: "1/4", year: 2009, team: "Cleveland Cavaliers" },
             { number: "2/4", year: 2010, team: "Cleveland Cavaliers" },
@@ -70,7 +70,7 @@ const PLAYER_PROFILES = {
         lastName: "Jordan",
         fullName: "Michael Jordan",
         color: "#ce1141",
-        img: "https://www.figma.com/api/mcp/asset/bc601e85-e23e-45fa-a41d-b4edd642885f",
+        img: "images/michael.webp",
         trophies: [
             { number: "1/5", year: 1988, team: "Chicago Bulls" },
             { number: "2/5", year: 1991, team: "Chicago Bulls" },
@@ -132,7 +132,7 @@ const PLAYER_PROFILES = {
         lastName: "O'Neal",
         fullName: "Shaquille O'Neal",
         color: "#552583",
-        img: "https://www.figma.com/api/mcp/asset/4d6e3c8e-7b26-4050-9d75-55731b32e7b9",
+        img: "images/shaquille.webp",
         trophies: [
             { number: "1/1", year: 2000, team: "Los Angeles Lakers" },
         ],
